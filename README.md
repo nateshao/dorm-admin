@@ -1,19 +1,16 @@
-# DormAdmin
+# dorm-admin
 
-####  介绍
-使用SpringBoot+Vue前后端分离  简单实现的宿舍管理系统
-
-涉及Spring Security, Mybatis
+SpringBoot+SpringSecurity+Mybatis+Vue前后端分离 简单实现的宿舍管理系统。
 
 
-#### 使用
+#### 启动后端
 
 1.  导入sql文件
-2.  使用ide导入项目dorm-admin 更新maven
+2.  使用ide导入项目dorm-admin-server 更新maven
 3.  修改application.yml
-4.  运行DormAdminApplication.java
+4.  运行DormAdminServerApplication.java
 
----
+####  启动前端
 
 1.  导入项目dorm-admin-page
 2.  修改config/index.js
@@ -22,9 +19,9 @@
 5.  npm run dev
 6.  浏览器打开http://localhost:8080/
 
+#### 启动redis
+
 ---
-
-
 
 ## 数据库导入错误
 
