@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaiyu.dao.MenuDao">
+    <resultMap id="BaseResultMap" type="com.kaiyu.entity.Menu">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="path" jdbcType="VARCHAR" property="path"/>
+        <result column="component" jdbcType="VARCHAR" property="component"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="iconCls" jdbcType="VARCHAR" property="iconCls"/>
+        <result column="parentId" jdbcType="INTEGER" property="parentId"/>
+        <result column="enabled" jdbcType="BOOLEAN" property="enabled"/>
+        <association property="meta" javaType="com.kaiyu.entity.Meta">
+            <result column="keepAlive" property="keepAlive" jdbcType="BIT"/>
+            <result column="requireAuth" property="requireAuth" jdbcType="BIT"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="MenuWithRole" type="com.kaiyu.entity.Menu" extends="BaseResultMap">
+        <collection property="roles" ofType="com.kaiyu.entity.Role">
+            <id column="rid" property="id"/>
+            <result column="rname" property="name"/>
+            <result column="rnameZh" property="nameZh"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="Menus2" type="com.kaiyu.entity.Menu" extends="BaseResultMap">
+        <collection property="children" ofType="com.kaiyu.entity.Menu">
+            <id column="id2" property="id" jdbcType="INTEGER"/>
+            <result column="url2" property="url" jdbcType="VARCHAR"/>
+            <result column="path2" property="path" jdbcType="VARCHAR"/>
+            <result column="component2" property="component" jdbcType="VARCHAR"/>
+            <result column="name2" property="name" jdbcType="VARCHAR"/>
+            <result column="iconCls2" property="iconCls" jdbcType="VARCHAR"/>
+            <result column="parentId2" property="parentId" jdbcType="INTEGER"/>
+            <result column="enabled2" property="enabled" jdbcType="BIT"/>
+            <association property="meta" javaType="com.kaiyu.entity.Meta">
+                <result column="keepAlive2" property="keepAlive" jdbcType="BIT"/>
+                <result column="requireAuth2" property="requireAuth" jdbcType="BIT"/>
+            </association>
+        </collection>
+    </resultMap>
+
+    <select id="getAllMenusWithRole" resultMap="MenuWithRole">
+        select m.*, r.`id` as rid, r.`name` as rname, r.`nameZh` as rnameZh
+        from menu m,
+             menu_role mr,
+             role r
+        where m.`id` = mr.`mid`
+          and mr.`rid` = r.`id`
+        order by m.`id`
+    </select>
+
+    <select id="getMenusByUserId" resultMap="Menus2">
+        select distinct m1.*,
+                        m2.`id`          as id2,
+                        m2.`component`   as component2,
+                        m2.`enabled`     as enabled2,
+                        m2.`iconCls`     as iconCls2,
+                        m2.`keepAlive`   as keepAlive2,
+                        m2.`name`        as name2,
+                        m2.`parentId`    as parentId2,
+                        m2.`requireAuth` as requireAuth2,
+                        m2.`path`        as path2
+        from menu m1,
+             menu m2,
+             user_role ur,
+             menu_role mr
+        where m1.`id` = m2.`parentId`
+          and ur.`uid` = #{userId}
+          and ur.`rid` = mr.`rid`
+          and mr.`mid` = m2.`id`
+          and m2.`enabled` = true
+        order by m1.`id`, m2.`id`
+    </select>
+
+
+</mapper>
