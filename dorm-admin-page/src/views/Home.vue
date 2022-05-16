@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header class="homeHeader">
-      <div class="title">广软宿舍管理系统</div>
+      <div class="title">广东白云学院宿舍管理系统</div>
       <div>
         <el-dropdown class="profile" @command="commandHandler">
           <span class="el-dropdown-link">
