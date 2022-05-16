@@ -4,8 +4,8 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author mxxxl
- * @date 2021/6/19
+ * @author 邵桐杰
+ * @date 2022/5/13
  */
 @Repository
 public interface UserRoleDao {

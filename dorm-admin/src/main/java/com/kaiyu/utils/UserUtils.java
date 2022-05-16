@@ -4,8 +4,8 @@ import com.kaiyu.entity.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
- * @author mxxxl
- * @date 2021/6/21
+ * @author 邵桐杰
+ * @date 2022/5/14
  */
 public class UserUtils {
 

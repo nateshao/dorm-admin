@@ -5,8 +5,8 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @author mxxxl
- * @date 2021/6/23
+ * @author 邵桐杰
+ * @date 2022/5/13
  */
 @Data
 public class ResponsePage {

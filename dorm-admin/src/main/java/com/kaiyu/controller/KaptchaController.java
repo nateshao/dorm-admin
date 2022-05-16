@@ -16,8 +16,8 @@ import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 
 /**
- * @author mxxxl
- * @date 2021/6/15
+ * @author 邵桐杰
+ * @date 2022/5/16
  */
 @Slf4j
 @RequestMapping("/api")

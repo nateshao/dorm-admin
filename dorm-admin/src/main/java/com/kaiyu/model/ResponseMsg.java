@@ -3,8 +3,8 @@ package com.kaiyu.model;
 import lombok.Getter;
 
 /**
- * @author mxxxl
- * @date 2021/6/15
+ * @author 邵桐杰
+ * @date 2022/5/16
  */
 @Getter
 public class ResponseMsg {

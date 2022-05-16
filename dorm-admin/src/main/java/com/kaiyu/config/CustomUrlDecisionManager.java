@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 
 /**
- * @author mxxxl
- * @date 2021/6/21
+ * @author 邵桐杰
+ * @date 2022/5/14
  */
 @Component
 public class CustomUrlDecisionManager implements AccessDecisionManager {

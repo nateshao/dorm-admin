@@ -17,8 +17,8 @@ import java.util.List;
 /**
  * 根据用户传来的请求地址，分析出请求需要的角色
  *
- * @author mxxxl
- * @date 2021/6/21
+ * @author 邵桐杰
+ * @date 2022/5/14
  */
 @Component
 public class CustomFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {

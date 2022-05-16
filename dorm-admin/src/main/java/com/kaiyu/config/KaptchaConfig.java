@@ -9,8 +9,8 @@ import java.util.Properties;
 
 /**
  * Google验证码配置类
- * @author mxxxl
- * @date 2021/6/15
+ * @author 邵桐杰
+ * @date 2022/5/16
  */
 @Configuration
 public class KaptchaConfig {
