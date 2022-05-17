@@ -17,9 +17,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserMapperTest {
 
     @Test
+    @Transactional
     void saveUser() {
     }
-
+    /**
+     * TODO
+     */
     @Test
     void findByUsername() {
     }
@@ -27,7 +30,9 @@ class UserMapperTest {
     @Test
     void getUserRolesById() {
     }
-
+    /**
+     * TODO
+     */
     @Test
     void findUserById() {
     }
@@ -41,7 +46,9 @@ class UserMapperTest {
     @Transactional
     void updateUser() {
     }
-
+    /**
+     * TODO
+     */
     @Test
     void getUserByName() {
     }
