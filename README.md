@@ -23,6 +23,16 @@ SpringBoot+SpringSecurity+Mybatis+Vue前后端分离 简单实现的宿舍管理
 
 ---
 
+## 技术栈：
+
+- 前端：Vue
+- 后端：Spring boot + Spring security + Mybatis
+- 数据库：MySQL+Redis
+
+
+
+
+
 ## 数据库导入错误
 
 ```java
