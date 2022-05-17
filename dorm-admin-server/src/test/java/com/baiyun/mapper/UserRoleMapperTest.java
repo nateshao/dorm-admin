@@ -1,6 +1,7 @@
 package com.baiyun.mapper;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,10 +17,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserRoleMapperTest {
 
     @Test
+    @Transactional
     void deleteByUserId() {
     }
 
     @Test
+    @Transactional
     void addRole() {
     }
 }

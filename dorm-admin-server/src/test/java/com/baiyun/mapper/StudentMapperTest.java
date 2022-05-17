@@ -1,6 +1,7 @@
 package com.baiyun.mapper;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,14 +21,17 @@ class StudentMapperTest {
     }
 
     @Test
+    @Transactional
     void saveStudent() {
     }
 
     @Test
+    @Transactional
     void editStudent() {
     }
 
     @Test
+    @Transactional
     void deleteStudents() {
     }
 }

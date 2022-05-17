@@ -1,6 +1,7 @@
 package com.baiyun.mapper;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,10 +33,12 @@ class UserMapperTest {
     }
 
     @Test
+    @Transactional
     void updatePassword() {
     }
 
     @Test
+    @Transactional
     void updateUser() {
     }
 
@@ -44,6 +47,7 @@ class UserMapperTest {
     }
 
     @Test
+    @Transactional
     void deleteUser() {
     }
 }

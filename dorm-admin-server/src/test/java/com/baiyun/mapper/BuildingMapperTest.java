@@ -1,7 +1,12 @@
 package com.baiyun.mapper;
 
+import com.baiyun.entity.Building;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,24 +21,33 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @SpringBootTest
 class BuildingMapperTest {
+    @Autowired
+    private BuildingMapper buildingMapper;
 
     @Test
     void getBuildingByName() {
+        List<Building> buildingList = buildingMapper.getBuildingByName("清枫阁");
+        buildingList.stream().forEach(list-> System.out.println("list = " + list));
     }
 
     @Test
+    @Transactional
     void saveBuilding() {
     }
 
     @Test
+    @Transactional
     void editBuilding() {
     }
 
     @Test
+    @Transactional
     void deleteBuildings() {
     }
 
     @Test
     void getBuildingAll() {
+        List<Building> list = buildingMapper.getBuildingAll();
+        list.stream().forEach(lists-> System.out.println("lists = " + lists));
     }
 }

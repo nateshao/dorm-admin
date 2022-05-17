@@ -1,7 +1,12 @@
 package com.baiyun.mapper;
 
+import com.baiyun.entity.Dorm;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,24 +21,33 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @SpringBootTest
 class DormMapperTest {
+    @Autowired
+    private DormMapper dormMapper;
 
     @Test
     void getDormAll() {
+        List<Dorm> dormList = dormMapper.getDormAll();
+        dormList.stream().forEach(list-> System.out.println("list = " + list));
     }
 
     @Test
     void getDormByName() {
+        List<Dorm> dormList = dormMapper.getDormByName("5-706");
+        dormList.stream().forEach(list->System.out.println("list = " + list));
     }
 
     @Test
+    @Transactional
     void saveDorm() {
     }
 
     @Test
+    @Transactional
     void editDorm() {
     }
 
     @Test
+    @Transactional
     void deleteDorms() {
     }
 }
