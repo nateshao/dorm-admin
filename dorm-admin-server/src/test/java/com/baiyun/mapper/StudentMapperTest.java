@@ -1,7 +1,11 @@
 package com.baiyun.mapper;
 
+import com.baiyun.entity.Student;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,11 +19,17 @@ import static org.junit.jupiter.api.Assertions.*;
  * Description:
  */
 class StudentMapperTest {
+    @Autowired
+    private StudentMapper studentMapper;
+
     /**
      * TODO
      */
     @Test
     void getStudentByName() {
+        List<Student> studentList = studentMapper.getStudentByName("钟开瑜");
+        studentList.stream().forEach(list-> System.out.println("list = " + list));
+
     }
 
     @Test

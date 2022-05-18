@@ -27,7 +27,11 @@ class DormMapperTest {
     @Test
     void getDormAll() {
         List<Dorm> dormList = dormMapper.getDormAll();
-        dormList.stream().forEach(list-> System.out.println("list = " + list));
+//        dormList.stream().forEach(list-> System.out.println("list = " + list));
+        for (Dorm dorm : dormList) {
+            System.out.println("dorm = " + dorm);
+        }
+
     }
 
     @Test

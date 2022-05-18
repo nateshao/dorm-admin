@@ -1,6 +1,8 @@
 package com.baiyun.mapper;
 
+import com.baiyun.entity.User;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,21 +17,27 @@ import static org.junit.jupiter.api.Assertions.*;
  * Description:
  */
 class UserMapperTest {
+    @Autowired
+    private UserMapper userMapper;
 
     @Test
     @Transactional
     void saveUser() {
     }
+
     /**
      * TODO
      */
     @Test
     void findByUsername() {
+        User user = userMapper.findByUsername("管理员");
+        System.out.println("user = " + user);
     }
 
     @Test
     void getUserRolesById() {
     }
+
     /**
      * TODO
      */
@@ -46,6 +54,7 @@ class UserMapperTest {
     @Transactional
     void updateUser() {
     }
+
     /**
      * TODO
      */
