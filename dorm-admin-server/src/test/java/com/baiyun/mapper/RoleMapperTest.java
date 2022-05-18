@@ -1,8 +1,12 @@
 package com.baiyun.mapper;
 
+import com.baiyun.entity.Role;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,9 +21,13 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @SpringBootTest
 class RoleMapperTest {
+    @Autowired
+    private RoleMapper roleMapper;
 
     @Test
     void getAllRoles() {
+        List<Role> roleList = roleMapper.getAllRoles();
+        roleList.stream().forEach(list-> System.out.println("list = " + list));
     }
 
     @Test

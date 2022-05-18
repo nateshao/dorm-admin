@@ -1,7 +1,11 @@
 package com.baiyun.mapper;
 
+import com.baiyun.entity.Menu;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,16 +20,24 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @SpringBootTest
 class MenuMapperTest {
+    @Autowired
+    private MenuMapper menuMapper;
+
     /**
      * TODO
      */
     @Test
     void getAllMenusWithRole() {
+        List<Menu> menuList = menuMapper.getAllMenusWithRole();
+        menuList.stream().forEach(list-> System.out.println("list = " + list));
+
     }
     /**
      * TODO
      */
     @Test
     void getMenusByUserId() {
+        List<Menu> menuList = menuMapper.getMenusByUserId(7);
+        menuList.stream().forEach(list-> System.out.println("list = " + list));
     }
 }
