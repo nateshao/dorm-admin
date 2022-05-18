@@ -1,9 +1,12 @@
 package com.baiyun.mapper;
 
+import com.baiyun.entity.Role;
 import com.baiyun.entity.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,12 +33,14 @@ class UserMapperTest {
      */
     @Test
     void findByUsername() {
-        User user = userMapper.findByUsername("管理员");
-        System.out.println("user = " + user);
+//        User user = userMapper.findByUsername("管理员");
+//        System.out.println("user = " + user);
     }
 
     @Test
     void getUserRolesById() {
+        List<Role> roleList = userMapper.getUserRolesById(14);
+        roleList.stream().forEach(list-> System.out.println("list = " + list));
     }
 
     /**
@@ -43,6 +48,8 @@ class UserMapperTest {
      */
     @Test
     void findUserById() {
+        User userById = userMapper.findUserById(13);
+        System.out.println("userById = " + userById);
     }
 
     @Test

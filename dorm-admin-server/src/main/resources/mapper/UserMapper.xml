@@ -61,11 +61,8 @@
     </select>
 
     <select id="getUserRolesById" resultType="com.baiyun.entity.Role">
-        select r.*
-        from role r,
-             user_role ur
-        where ur.rid = r.id
-          and ur.uid = #{id}
+        select r.* from role r, user_role ur
+        where ur.rid = r.id and ur.uid = #{id}
     </select>
 
     <select id="findUserById" resultType="com.baiyun.entity.User">

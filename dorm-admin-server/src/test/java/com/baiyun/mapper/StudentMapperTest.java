@@ -27,9 +27,8 @@ class StudentMapperTest {
      */
     @Test
     void getStudentByName() {
-        List<Student> studentList = studentMapper.getStudentByName("钟开瑜");
+        List<Student> studentList = studentMapper.getStudentByName("千羽");
         studentList.stream().forEach(list-> System.out.println("list = " + list));
-
     }
 
     @Test
