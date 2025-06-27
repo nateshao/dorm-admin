@@ -44,15 +44,29 @@ services:
       - backend
     restart: always
 
+  alertmanager:
+    image: prom/alertmanager
+    container_name: dorm-alertmanager
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    ports:
+      - "9093:9093"
+    depends_on:
+      - prometheus
+
   prometheus:
     image: prom/prometheus
     container_name: dorm-prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./alert.rules.yml:/etc/prometheus/alert.rules.yml
     ports:
       - "9090:9090"
     depends_on:
       - backend
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--web.enable-lifecycle'
 
   grafana:
     image: grafana/grafana
