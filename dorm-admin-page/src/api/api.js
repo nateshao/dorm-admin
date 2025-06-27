@@ -80,3 +80,21 @@ export function exportStudents() {
     responseType: 'blob'
   })
 }
+
+// 宿舍数据导入
+export function importDorms(formData) {
+  return request({
+    url: '/api/importexport/import/dorms',
+    method: 'post',
+    data: formData,
+    headers: { 'Content-Type': 'multipart/form-data' }
+  })
+}
+// 宿舍数据导出
+export function exportDorms() {
+  return request({
+    url: '/api/importexport/export/dorms',
+    method: 'get',
+    responseType: 'blob'
+  })
+}
