@@ -29,6 +29,11 @@ export default new Router({
       }]
     },
     {
+      path: '/ops/sms',
+      name: 'SmsSend',
+      component: () => import('@/views/ops/SmsSend.vue')
+    },
+    {
       path: '*',
       redirect: '/home'
     }
