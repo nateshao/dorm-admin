@@ -90,6 +90,10 @@
             <artifactId>easyexcel</artifactId>
             <version>3.3.2</version>
         </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

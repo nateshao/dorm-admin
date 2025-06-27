@@ -41,3 +41,13 @@ pagehelper:
 logging:
   level:
     com.baiyun.mapper: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
