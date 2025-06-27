@@ -185,11 +185,23 @@
         >确 定</el-button>
       </span>
     </el-dialog>
+
+    <el-upload
+      :show-file-list="false"
+      :before-upload="beforeUpload"
+      :http-request="handleImport"
+      accept=".xls,.xlsx"
+    >
+      <el-button type="primary">导入学生数据</el-button>
+    </el-upload>
+    <el-button type="success" @click="handleExport" style="margin-left: 10px;">导出学生数据</el-button>
   </div>
 
 </template>
 
 <script>
+import { importStudents, exportStudents } from '@/api/api'
+
 export default {
   methods: {
     handleSizeChange(val) {
@@ -323,6 +335,32 @@ export default {
             message: "已取消删除"
           });
         });
+    },
+    beforeUpload(file) {
+      const isExcel = file.type === 'application/vnd.ms-excel' || file.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+      if (!isExcel) {
+        this.$message.error('只能上传Excel文件');
+      }
+      return isExcel;
+    },
+    async handleImport(option) {
+      const formData = new FormData();
+      formData.append('file', option.file);
+      await importStudents(formData);
+      this.$message.success('导入成功');
+      // 可刷新学生列表
+    },
+    async handleExport() {
+      const res = await exportStudents();
+      const blob = new Blob([res], { type: 'application/vnd.ms-excel' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', '学生数据.xlsx');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
     }
   },
   mounted() {

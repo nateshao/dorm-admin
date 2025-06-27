@@ -62,3 +62,21 @@ export const deleteRequest = (url, params) => {
         params: params
     })
 }
+
+// 学生数据导入
+export function importStudents(formData) {
+  return request({
+    url: '/api/importexport/import/students',
+    method: 'post',
+    data: formData,
+    headers: { 'Content-Type': 'multipart/form-data' }
+  })
+}
+// 学生数据导出
+export function exportStudents() {
+  return request({
+    url: '/api/importexport/export/students',
+    method: 'get',
+    responseType: 'blob'
+  })
+}
