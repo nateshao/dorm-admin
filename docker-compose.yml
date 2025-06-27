@@ -1,0 +1,77 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: dorm-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dorm_admin
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+    restart: always
+
+  redis:
+    image: redis:6.2
+    container_name: dorm-redis
+    ports:
+      - "6379:6379"
+    restart: always
+
+  backend:
+    build: ./dorm-admin-server
+    container_name: dorm-backend
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/dorm_admin?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_REDIS_HOST: redis
+    depends_on:
+      - mysql
+      - redis
+    restart: always
+
+  frontend:
+    build: ./dorm-admin-page
+    container_name: dorm-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
+
+  alertmanager:
+    image: prom/alertmanager
+    container_name: dorm-alertmanager
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    ports:
+      - "9093:9093"
+    depends_on:
+      - prometheus
+
+  prometheus:
+    image: prom/prometheus
+    container_name: dorm-prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./alert.rules.yml:/etc/prometheus/alert.rules.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - backend
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--web.enable-lifecycle'
+
+  grafana:
+    image: grafana/grafana
+    container_name: dorm-grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus 

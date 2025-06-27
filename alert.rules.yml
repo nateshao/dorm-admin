@@ -1,0 +1,19 @@
+groups:
+- name: dorm-admin-alerts
+  rules:
+  - alert: DormBackendDown
+    expr: up{job="dorm-backend"} == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Dorm Admin 后端服务宕机"
+      description: "后端服务1分钟不可用"
+  - alert: DormBackendHighError
+    expr: rate(http_server_requests_seconds_count{status=~"5.."}[1m]) > 0
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Dorm Admin 后端5xx错误"
+      description: "后端1分钟内出现5xx错误" 

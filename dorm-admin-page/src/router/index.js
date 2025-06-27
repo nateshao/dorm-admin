@@ -29,6 +29,21 @@ export default new Router({
       }]
     },
     {
+      path: '/ops/sms',
+      name: 'SmsSend',
+      component: () => import('@/views/ops/SmsSend.vue')
+    },
+    {
+      path: '/ops/card-sync',
+      name: 'CardSync',
+      component: () => import('@/views/ops/CardSync.vue')
+    },
+    {
+      path: '/ops/sms-history',
+      name: 'SmsHistory',
+      component: () => import('@/views/ops/SmsHistory.vue')
+    },
+    {
       path: '*',
       redirect: '/home'
     }
